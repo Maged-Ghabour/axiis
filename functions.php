@@ -159,6 +159,9 @@ function axiis_admin_custom_font() {
         #adminmenu .wp-submenu a {
             font-size: 15px !important;
         }
+        #adminmenu a {
+            font-weight: 800 !important;
+        }
     </style>
     ';
 }
