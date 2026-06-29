@@ -1,0 +1,15 @@
+/*
+Theme Name: Axiis Design
+Theme URI: https://axiis-design.com
+Author: Antigravity AI
+Author URI: https://antigravity.ai
+Description: A premium, dynamic WordPress theme custom-built for Axiis Design, featuring GSAP animations, 3D tilt effects, and a custom dashboard.
+Version: 1.0.0
+License: Proprietary
+Text Domain: axiis-theme
+*/
+
+/* 
+ * NOTE: The actual styling is loaded from main.css and dynamically from enqueue scripts.
+ * This file is only used for the WordPress Theme metadata.
+ */
