@@ -141,3 +141,31 @@ function axiis_disable_emojis() {
 }
 add_action( 'init', 'axiis_disable_emojis' );
 
+
+// Apply IBM Plex Sans Arabic font to WordPress Dashboard
+function axiis_admin_custom_font() {
+    echo '
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, #wpadminbar *:not([class="ab-icon"]), .wp-core-ui, .media-menu, .media-frame *, .wp-admin, .wp-admin p, .wp-admin h1, .wp-admin h2, .wp-admin h3, .wp-admin h4, .wp-admin h5, .wp-admin h6, .acf-field {
+            font-family: "IBM Plex Sans Arabic", sans-serif !important;
+        }
+    </style>
+    ';
+}
+add_action('admin_head', 'axiis_admin_custom_font');
+
+
+// Optimize CSS Delivery
+function axiis_async_styles( $html, $handle ) {
+    $async_styles = array( 'fontawesome', 'swiper-css' );
+    if ( in_array( $handle, $async_styles ) ) {
+        $html = str_replace( 'media=''all''', 'media="print" onload="this.media=''all''"', $html );
+        $html = str_replace( 'media="all"', 'media="print" onload="this.media=''all''"', $html );
+    }
+    return $html;
+}
+add_filter( 'style_loader_tag', 'axiis_async_styles', 10, 2 );
+

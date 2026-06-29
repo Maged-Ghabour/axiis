@@ -7,12 +7,21 @@ $hero_bg = function_exists('get_field') && get_field('hero_background', get_opti
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    $site_description = get_bloginfo( 'description', 'display' );
-    if ( $site_description && ( is_home() || is_front_page() ) ) : ?>
-        <meta name="description" content="<?php echo esc_attr( $site_description ); ?>">
-    <?php elseif ( is_singular() && has_excerpt() ) : ?>
-        <meta name="description" content="<?php echo esc_attr( wp_strip_all_tags( get_the_excerpt() ) ); ?>">
-    <?php endif; ?>
+    // SEO Meta Description Fallback
+    $site_desc = get_bloginfo( 'description', 'display' );
+    if ( empty($site_desc) || $site_desc == 'Just another WordPress site' ) {
+        $site_desc = get_bloginfo( 'name', 'display' ) . ' - موقع متخصص في أعمال الألمنيوم والحديد والديكورات';
+    }
+    
+    if ( is_singular() ) {
+        global $post;
+        $page_desc = has_excerpt() ? wp_strip_all_tags( get_the_excerpt() ) : wp_trim_words( wp_strip_all_tags( $post->post_content ), 20, '...' );
+        if ( empty($page_desc) ) $page_desc = $site_desc;
+        echo '<meta name="description" content="' . esc_attr( $page_desc ) . '">';
+    } else {
+        echo '<meta name="description" content="' . esc_attr( $site_desc ) . '">';
+    }
+    ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -20,7 +29,8 @@ $hero_bg = function_exists('get_field') && get_field('hero_background', get_opti
     <?php if(!empty($hero_bg)): ?>
     <link rel="preload" as="image" href="<?php echo esc_url($hero_bg); ?>">
     <?php endif; ?>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"></noscript>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

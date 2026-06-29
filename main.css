@@ -422,7 +422,7 @@ body {
     border: none;
     padding: 14px 65px;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     font-family: var(--font-family);
@@ -707,15 +707,15 @@ body {
 
 .cta-bg-img {
     position: absolute;
-    top: 0;
+    top: 32px;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1;
-    background-position: right center;
+    background-position: top center;
     background-size: cover;
-    object-position: right center; /* Added for img tag compatibility */
+    /* object-position: right center; */
+    z-index: 1;
 }
 
 .cta-overlay {
@@ -1050,7 +1050,7 @@ body {
     }
     
     .step-number {
-        font-size: 32px;
+        font-size: 20px;
         order: 2;
     }
     
