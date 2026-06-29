@@ -59,7 +59,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                     $count = 0;
                     while ( $services_query->have_posts() ) : $services_query->the_post();
                         $count++;
-                        $wide_class = ( $count == 1 ) ? 'wide-card' : '';
+                        $wide_class = ( $count % 4 == 1 ) ? 'wide-card' : '';
                         if ( has_post_thumbnail() ) {
                             $icon_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
                         } else {
