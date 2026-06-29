@@ -5,6 +5,13 @@ acf_add_local_field_group(array(
     'key' => 'group_homepage_settings',
     'title' => 'إعدادات الصفحة الرئيسية',
     'fields' => array(
+        // Tab 1: Hero Section
+        array(
+            'key' => 'tab_hero_section',
+            'label' => 'قسم البداية (Hero)',
+            'name' => '',
+            'type' => 'tab',
+        ),
         array(
             'key' => 'field_hero_background',
             'label' => 'خلفية قسم البداية (Hero Background)',
@@ -26,6 +33,14 @@ acf_add_local_field_group(array(
             'name' => 'hero_subtitle',
             'type' => 'textarea',
             'rows' => 3,
+        ),
+        
+        // Tab 2: Process Section
+        array(
+            'key' => 'tab_process_section',
+            'label' => 'مراحل العمل',
+            'name' => '',
+            'type' => 'tab',
         ),
         array(
             'key' => 'field_process_title',
@@ -56,6 +71,14 @@ acf_add_local_field_group(array(
             'label' => 'عنوان الخطوة الرابعة',
             'name' => 'step_4_title',
             'type' => 'text',
+        ),
+        
+        // Tab 3: CTA Section
+        array(
+            'key' => 'tab_cta_section',
+            'label' => 'قسم التواصل المباشر',
+            'name' => '',
+            'type' => 'tab',
         ),
         array(
             'key' => 'field_cta_background',

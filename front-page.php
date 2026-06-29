@@ -85,7 +85,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
     </section>
 
     <!-- Why Us Section -->
-    <section class="why-us-section">
+    <section class="features-section">
         <div class="container">
             <div class="section-header">
                 <span class="badge outline-badge">لماذا تختارنا؟</span>
