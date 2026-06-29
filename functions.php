@@ -160,6 +160,7 @@ add_action('admin_head', 'axiis_admin_custom_font');
 
 // Optimize CSS Delivery
 function axiis_async_styles( $html, $handle ) {
+    if ( is_admin() || empty($handle) || !is_string($handle) ) return $html;
     $async_styles = array( 'fontawesome', 'swiper-css' );
     if ( in_array( $handle, $async_styles ) || strpos($handle, 'subscription') !== false ) {
         $html = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $html );
@@ -170,7 +171,8 @@ function axiis_async_styles( $html, $handle ) {
 add_filter( 'style_loader_tag', 'axiis_async_styles', 10, 2 );
 
 // Defer non-critical JS
-function axiis_defer_scripts( $tag, $handle, $src ) {
+function axiis_defer_scripts( $tag, $handle, $src = '' ) {
+    if ( is_admin() || empty($handle) || !is_string($handle) ) return $tag;
     if ( strpos($handle, 'subscription') !== false || strpos($handle, 'gsap') !== false || strpos($handle, 'swiper') !== false ) {
         if ( false === strpos( $tag, 'defer' ) ) {
             $tag = str_replace( ' src', ' defer="defer" src', $tag );
