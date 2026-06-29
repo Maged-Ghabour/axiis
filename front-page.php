@@ -39,6 +39,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
         </div>
     </header>
 
+    <main id="main" class="site-main">
     <!-- Services Section -->
     <section class="services-section">
         <div class="container">
@@ -67,7 +68,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                         }
                         ?>
                         <div class="service-card <?php echo esc_attr($wide_class); ?>">
-                            <img src="<?php echo esc_url($icon_url); ?>" alt="<?php the_title_attribute(); ?>">
+                            <img loading="lazy" src="<?php echo esc_url($icon_url); ?>" alt="<?php the_title_attribute(); ?>">
                             <div class="service-content">
                                 <h3><?php the_title(); ?></h3>
                                 <p><?php echo wp_trim_words( get_the_excerpt(), 15 ); ?></p>
@@ -95,28 +96,28 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon1.png" alt="خبرة طويلة">
+                        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/icon1.png" alt="خبرة طويلة">
                     </div>
                     <h3>خبرة طويلة</h3>
                     <p>فريق فني متخصص ذو كفاءة عالية</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon2.png" alt="جودة المواد">
+                        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/icon2.png" alt="جودة المواد">
                     </div>
                     <h3>جودة المواد</h3>
                     <p>نستخدم أفضل الخامات المستوردة والمحلية</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon3.png" alt="دقة في المواعيد">
+                        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/icon3.png" alt="دقة في المواعيد">
                     </div>
                     <h3>دقة في المواعيد</h3>
                     <p>التزام كامل بجدول التنفيذ والتسليم</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/icon4.png" alt="إشراف احترافي">
+                        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/icon4.png" alt="إشراف احترافي">
                     </div>
                     <h3>إشراف احترافي</h3>
                     <p>متابعة دقيقة لجميع مراحل العمل</p>
@@ -158,7 +159,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                             }
                             ?>
                             <div class="swiper-slide">
-                                <img src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>">
+                                <img loading="lazy" src="<?php echo esc_url($img_url); ?>" alt="<?php the_title_attribute(); ?>">
                             </div>
                             <?php
                         endwhile;
@@ -276,13 +277,13 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                                         </div>
                                         <div class="user-info">
                                             <h3 class="user-name"><?php the_title(); ?></h3>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/avatar.png" alt="<?php the_title_attribute(); ?>" class="avatar">
+                                            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/avatar.png" alt="<?php the_title_attribute(); ?>" class="avatar">
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
                                         <?php the_content(); ?>
                                     </div>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/testimonials_shape.png" alt="Quote" class="quote-shape">
+                                    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/testimonials_shape.png" alt="Quote" class="quote-shape">
                                 </div>
                             </div>
                             <?php
@@ -300,7 +301,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
         <div class="container">
             <div class="cta-banner-container">
                 <?php $cta_bg = function_exists('get_field') && get_field('cta_background') ? get_field('cta_background') : get_template_directory_uri() . '/assets/banner1.png'; ?>
-                <img src="<?php echo esc_url($cta_bg); ?>" alt="<?php echo esc_attr($cta_text); ?>" class="cta-bg-img">
+                <img loading="lazy" src="<?php echo esc_url($cta_bg); ?>" alt="<?php echo esc_attr($cta_text); ?>" class="cta-bg-img">
                 <div class="cta-content">
                     <h2><?php echo esc_html($cta_text); ?></h2>
                     <p>احصل على استشارة مجانية وعرض سعر مخصص حسب احتياجاتك.</p>
@@ -309,5 +310,6 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
             </div>
         </div>
     </section>
+    </main>
 
 <?php get_footer(); ?>

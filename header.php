@@ -1,10 +1,25 @@
+<?php
+$hero_bg = function_exists('get_field') && get_field('hero_background', get_option('page_on_front')) ? get_field('hero_background', get_option('page_on_front')) : '';
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> dir="rtl">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    $site_description = get_bloginfo( 'description', 'display' );
+    if ( $site_description && ( is_home() || is_front_page() ) ) : ?>
+        <meta name="description" content="<?php echo esc_attr( $site_description ); ?>">
+    <?php elseif ( is_singular() && has_excerpt() ) : ?>
+        <meta name="description" content="<?php echo esc_attr( wp_strip_all_tags( get_the_excerpt() ) ); ?>">
+    <?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <?php if(!empty($hero_bg)): ?>
+    <link rel="preload" as="image" href="<?php echo esc_url($hero_bg); ?>">
+    <?php endif; ?>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
@@ -44,7 +59,6 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
     <!-- PREMIUM FEATURES END (HTML) -->
 
     <?php 
-    $hero_bg = function_exists('get_field') && get_field('hero_background', get_option('page_on_front')) ? get_field('hero_background', get_option('page_on_front')) : '';
     $hero_style = $hero_bg ? 'style="background-image: url(' . esc_url($hero_bg) . ');"' : '';
     ?>
     <header class="hero-section" <?php echo $hero_style; ?>>

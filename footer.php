@@ -15,7 +15,7 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', get_option
             <div class="footer-content">
                 <!-- Column 1 (Logo & Desc) -->
                 <div class="footer-col">
-                    <img src="<?php echo esc_url($site_logo); ?>" alt="<?php bloginfo('name'); ?>" class="footer-logo">
+                    <img loading="lazy" src="<?php echo esc_url($site_logo); ?>" alt="<?php bloginfo('name'); ?>" class="footer-logo">
                     <p class="footer-desc">
                         <?php 
                         if( function_exists('get_field') && get_field('footer_description', get_option('page_on_front')) ) {

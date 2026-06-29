@@ -117,3 +117,27 @@ require_once get_template_directory() . '/inc/dummy-data.php';
 if( class_exists('ACF') ) {
     require_once get_template_directory() . '/inc/acf-fields.php';
 }
+
+// Defer scripts for better performance
+function axiis_defer_scripts( $tag, $handle, $src ) {
+    $defer_scripts = array( 'gsap', 'scrolltrigger', 'swiper-js' );
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return '<script src="' . esc_url( $src ) . '" defer="defer"></script>' . "\n";
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'axiis_defer_scripts', 10, 3 );
+
+
+// Disable WordPress Emojis for Performance
+function axiis_disable_emojis() {
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+}
+add_action( 'init', 'axiis_disable_emojis' );
+
