@@ -161,7 +161,6 @@ function axiis_admin_custom_font() {
         }
         #adminmenu a {
             font-family: "Alexandria", sans-serif !important;
-            font-weight: 800 !important;
         }
     </style>
     ';
