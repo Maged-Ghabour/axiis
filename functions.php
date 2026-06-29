@@ -147,7 +147,7 @@ function axiis_admin_custom_font() {
     echo '
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body, #wpadminbar *:not([class="ab-icon"]), .wp-core-ui, .media-menu, .media-frame *, .wp-admin, .wp-admin p, .wp-admin h1, .wp-admin h2, .wp-admin h3, .wp-admin h4, .wp-admin h5, .wp-admin h6, .acf-field {
             font-family: "IBM Plex Sans Arabic", sans-serif !important;
@@ -160,6 +160,7 @@ function axiis_admin_custom_font() {
             font-size: 15px !important;
         }
         #adminmenu a {
+            font-family: "Alexandria", sans-serif !important;
             font-weight: 800 !important;
         }
     </style>
