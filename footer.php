@@ -369,17 +369,15 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', get_option
             // 1. Preloader Fade Out
             const preloader = document.getElementById("preloader");
             if(preloader && typeof gsap !== 'undefined') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    gsap.to("#preloader", {
-                        yPercent: -100, // Slide up
-                        opacity: 0,
-                        duration: 0.8,
-                        delay: 0.2, // Small delay for effect
-                        ease: "power3.inOut",
-                        onComplete: () => {
-                            preloader.style.display = "none";
-                        }
-                    });
+                gsap.to("#preloader", {
+                    yPercent: -100, // Slide up
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 0.2, // Small delay for effect
+                    ease: "power3.inOut",
+                    onComplete: () => {
+                        preloader.style.display = "none";
+                    }
                 });
             }
 
