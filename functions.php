@@ -152,6 +152,13 @@ function axiis_admin_custom_font() {
         body, #wpadminbar *:not([class="ab-icon"]), .wp-core-ui, .media-menu, .media-frame *, .wp-admin, .wp-admin p, .wp-admin h1, .wp-admin h2, .wp-admin h3, .wp-admin h4, .wp-admin h5, .wp-admin h6, .acf-field {
             font-family: "IBM Plex Sans Arabic", sans-serif !important;
         }
+        body.wp-admin, body.wp-admin p, .wp-admin td, .wp-admin th, .wp-admin label, .wp-admin .wrap, #adminmenu a, .wp-core-ui .button, .acf-label label, .acf-input input, .acf-input textarea, .acf-input select {
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+        }
+        #adminmenu .wp-submenu a {
+            font-size: 15px !important;
+        }
     </style>
     ';
 }
