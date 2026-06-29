@@ -22,6 +22,7 @@ $hero_bg = function_exists('get_field') && get_field('hero_background', get_opti
         echo '<meta name="description" content="' . esc_attr( $site_desc ) . '">';
     }
     ?>
+    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/main.css?ver=1.0.0" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
