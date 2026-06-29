@@ -60,7 +60,11 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                     while ( $services_query->have_posts() ) : $services_query->the_post();
                         $count++;
                         $wide_class = ( $count == 1 ) ? 'wide-card' : '';
-                        $icon_url = function_exists('get_field') && get_field('service_icon_url') ? get_field('service_icon_url') : get_template_directory_uri() . '/assets/icon' . $count . '.png';
+                        if ( has_post_thumbnail() ) {
+                            $icon_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+                        } else {
+                            $icon_url = function_exists('get_field') && get_field('service_icon_url') ? get_field('service_icon_url') : get_template_directory_uri() . '/assets/icon' . $count . '.png';
+                        }
                         ?>
                         <div class="service-card <?php echo esc_attr($wide_class); ?>">
                             <img src="<?php echo esc_url($icon_url); ?>" alt="<?php the_title_attribute(); ?>">
