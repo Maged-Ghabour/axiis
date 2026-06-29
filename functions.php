@@ -162,8 +162,8 @@ add_action('admin_head', 'axiis_admin_custom_font');
 function axiis_async_styles( $html, $handle ) {
     $async_styles = array( 'fontawesome', 'swiper-css' );
     if ( in_array( $handle, $async_styles ) ) {
-        $html = str_replace( 'media=''all''', 'media="print" onload="this.media=''all''"', $html );
-        $html = str_replace( 'media="all"', 'media="print" onload="this.media=''all''"', $html );
+        $html = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $html );
+        $html = str_replace( 'media="all"', 'media="print" onload="this.media=\'all\'"', $html );
     }
     return $html;
 }
