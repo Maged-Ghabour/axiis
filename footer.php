@@ -1,13 +1,13 @@
 <?php 
-$site_logo = function_exists('get_field') && get_field('site_logo', 'option') ? get_field('site_logo', 'option') : get_template_directory_uri() . '/assets/logo.png';
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', 'option') ? get_field('whatsapp_number', 'option') : '+095 123 4567';
-$phone = function_exists('get_field') && get_field('phone_number', 'option') ? get_field('phone_number', 'option') : '+095 123 4567';
-$email = function_exists('get_field') && get_field('email_address', 'option') ? get_field('email_address', 'option') : 'example@hotmail.com';
+$site_logo = function_exists('get_field') && get_field('site_logo', get_option('page_on_front')) ? get_field('site_logo', get_option('page_on_front')) : get_template_directory_uri() . '/assets/logo.png';
+$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '+095 123 4567';
+$phone = function_exists('get_field') && get_field('phone_number', get_option('page_on_front')) ? get_field('phone_number', get_option('page_on_front')) : '+095 123 4567';
+$email = function_exists('get_field') && get_field('email_address', get_option('page_on_front')) ? get_field('email_address', get_option('page_on_front')) : 'example@hotmail.com';
 
-$facebook = function_exists('get_field') && get_field('facebook_url', 'option') ? get_field('facebook_url', 'option') : '#';
-$twitter = function_exists('get_field') && get_field('twitter_url', 'option') ? get_field('twitter_url', 'option') : '#';
-$instagram = function_exists('get_field') && get_field('instagram_url', 'option') ? get_field('instagram_url', 'option') : '#';
-$linkedin = function_exists('get_field') && get_field('linkedin_url', 'option') ? get_field('linkedin_url', 'option') : '#';
+$facebook = function_exists('get_field') && get_field('facebook_url', get_option('page_on_front')) ? get_field('facebook_url', get_option('page_on_front')) : '#';
+$twitter = function_exists('get_field') && get_field('twitter_url', get_option('page_on_front')) ? get_field('twitter_url', get_option('page_on_front')) : '#';
+$instagram = function_exists('get_field') && get_field('instagram_url', get_option('page_on_front')) ? get_field('instagram_url', get_option('page_on_front')) : '#';
+$linkedin = function_exists('get_field') && get_field('linkedin_url', get_option('page_on_front')) ? get_field('linkedin_url', get_option('page_on_front')) : '#';
 ?>
     <!-- Footer -->
     <footer class="main-footer">
@@ -18,8 +18,8 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', 'option') 
                     <img src="<?php echo esc_url($site_logo); ?>" alt="<?php bloginfo('name'); ?>" class="footer-logo">
                     <p class="footer-desc">
                         <?php 
-                        if( function_exists('get_field') && get_field('footer_description', 'option') ) {
-                            echo esc_html( get_field('footer_description', 'option') );
+                        if( function_exists('get_field') && get_field('footer_description', get_option('page_on_front')) ) {
+                            echo nl2br( esc_html( get_field('footer_description', get_option('page_on_front')) ) );
                         } else {
                             echo 'هذا وصف تجريبي';
                         }
@@ -27,7 +27,27 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', 'option') 
                     </p>
                 </div>
                 
-                <!-- Column 2 (Contact Info) -->
+                <!-- Column 2 (Quick Links / Footer Menu) -->
+                <div class="footer-col">
+                    <h3>روابط هامة</h3>
+                    <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'footer',
+                        'container'      => false,
+                        'menu_class'     => 'footer-links',
+                        'fallback_cb'    => function() {
+                            echo '<ul class="footer-links">';
+                            echo '<li><a href="'.home_url('/').'">الرئيسية</a></li>';
+                            echo '<li><a href="#">من نحن</a></li>';
+                            echo '<li><a href="#">الخدمات</a></li>';
+                            echo '<li><a href="#">اتصل بنا</a></li>';
+                            echo '</ul>';
+                        }
+                    ) );
+                    ?>
+                </div>
+
+                <!-- Column 3 (Contact Info) -->
                 <div class="footer-col">
                     <h3>تواصل معنا</h3>
                     <ul class="contact-info">
@@ -46,16 +66,22 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', 'option') 
                     </ul>
                 </div>
                 
-                <!-- Column 3 (Social Media) -->
+                <!-- Column 4 (Social Media) -->
+                <?php
+                $enable_social_media = function_exists('get_field') ? get_field('enable_social_media', get_option('page_on_front')) : true;
+                if ($enable_social_media === null) $enable_social_media = true;
+                if ($enable_social_media) : 
+                ?>
                 <div class="footer-col">
                     <h3>تابعنا على وسائل التواصل</h3>
                     <div class="social-icons">
-                        <?php if($facebook != '#'): ?><a href="<?php echo esc_url($facebook); ?>" target="_blank"><i class="fa-brands fa-facebook"></i></a><?php endif; ?>
-                        <?php if($twitter != '#'): ?><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a><?php endif; ?>
-                        <?php if($instagram != '#'): ?><a href="<?php echo esc_url($instagram); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a><?php endif; ?>
-                        <?php if($linkedin != '#'): ?><a href="<?php echo esc_url($linkedin); ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a><?php endif; ?>
+                        <?php if(!empty($facebook) && $facebook != '#'): ?><a href="<?php echo esc_url($facebook); ?>" target="_blank"><i class="fa-brands fa-facebook"></i></a><?php endif; ?>
+                        <?php if(!empty($twitter) && $twitter != '#'): ?><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a><?php endif; ?>
+                        <?php if(!empty($instagram) && $instagram != '#'): ?><a href="<?php echo esc_url($instagram); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a><?php endif; ?>
+                        <?php if(!empty($linkedin) && $linkedin != '#'): ?><a href="<?php echo esc_url($linkedin); ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a><?php endif; ?>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
             
             <div class="footer-bottom">
@@ -372,12 +398,11 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', 'option') 
 
             // 3. Custom GSAP Cursor
             if (window.matchMedia("(pointer: fine)").matches && typeof gsap !== 'undefined') {
-                document.body.classList.add("custom-cursor-active");
-                
                 const cursorDot = document.getElementById("cursor-dot");
                 const cursorOutline = document.getElementById("cursor-outline");
                 
                 if (cursorDot && cursorOutline) {
+                    document.body.classList.add("custom-cursor-active");
                     window.addEventListener("mousemove", (e) => {
                         gsap.set(cursorDot, { x: e.clientX, y: e.clientY });
                         gsap.to(cursorOutline, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });

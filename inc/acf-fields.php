@@ -3,7 +3,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
     'key' => 'group_homepage_settings',
-    'title' => 'إعدادات الصفحة الرئيسية',
+    'title' => 'إعدادات الصفحة الرئيسية والعامة',
     'fields' => array(
         // Tab 1: Hero Section
         array(
@@ -81,6 +81,33 @@ acf_add_local_field_group(array(
             'type' => 'tab',
         ),
         array(
+            'key' => 'field_enable_custom_cursor',
+            'label' => 'تفعيل المؤشر المخصص (Custom Cursor)',
+            'name' => 'enable_custom_cursor',
+            'type' => 'true_false',
+            'message' => 'تفعيل',
+            'default_value' => 1,
+            'ui' => 1,
+        ),
+        array(
+            'key' => 'field_enable_floating_whatsapp',
+            'label' => 'تفعيل أيقونة الواتساب العائمة',
+            'name' => 'enable_floating_whatsapp',
+            'type' => 'true_false',
+            'message' => 'تفعيل',
+            'default_value' => 1,
+            'ui' => 1,
+        ),
+        array(
+            'key' => 'field_enable_social_media',
+            'label' => 'تفعيل روابط السوشيال ميديا',
+            'name' => 'enable_social_media',
+            'type' => 'true_false',
+            'message' => 'تفعيل',
+            'default_value' => 1,
+            'ui' => 1,
+        ),
+        array(
             'key' => 'field_cta_background',
             'label' => 'خلفية قسم التواصل (CTA Background)',
             'name' => 'cta_background',
@@ -92,6 +119,71 @@ acf_add_local_field_group(array(
             'label' => 'عنوان بانر التواصل (CTA Banner)',
             'name' => 'cta_text',
             'type' => 'text',
+        ),
+
+        // Tab 4: General Settings (Moved from Options Page)
+        array(
+            'key' => 'tab_general_settings',
+            'label' => 'الإعدادات العامة (الفوتر والتواصل)',
+            'name' => '',
+            'type' => 'tab',
+        ),
+        array(
+            'key' => 'field_site_logo',
+            'label' => 'شعار الموقع (اللوجو)',
+            'name' => 'site_logo',
+            'type' => 'image',
+            'return_format' => 'url',
+        ),
+        array(
+            'key' => 'field_footer_desc',
+            'label' => 'وصف الفوتر',
+            'name' => 'footer_description',
+            'type' => 'textarea',
+            'rows' => 4,
+        ),
+        array(
+            'key' => 'field_whatsapp_number',
+            'label' => 'رقم الواتساب',
+            'name' => 'whatsapp_number',
+            'type' => 'text',
+            'instructions' => 'الرقم بالصيغة الدولية (مثل: 966500000000)',
+        ),
+        array(
+            'key' => 'field_phone_number',
+            'label' => 'رقم الهاتف',
+            'name' => 'phone_number',
+            'type' => 'text',
+        ),
+        array(
+            'key' => 'field_email_address',
+            'label' => 'البريد الإلكتروني',
+            'name' => 'email_address',
+            'type' => 'email',
+        ),
+        array(
+            'key' => 'field_facebook_url',
+            'label' => 'رابط فيسبوك',
+            'name' => 'facebook_url',
+            'type' => 'url',
+        ),
+        array(
+            'key' => 'field_twitter_url',
+            'label' => 'رابط تويتر / X',
+            'name' => 'twitter_url',
+            'type' => 'url',
+        ),
+        array(
+            'key' => 'field_instagram_url',
+            'label' => 'رابط انستجرام',
+            'name' => 'instagram_url',
+            'type' => 'url',
+        ),
+        array(
+            'key' => 'field_linkedin_url',
+            'label' => 'رابط لينكد إن',
+            'name' => 'linkedin_url',
+            'type' => 'url',
         ),
     ),
     'location' => array(
@@ -112,91 +204,5 @@ acf_add_local_field_group(array(
     'active' => true,
     'description' => '',
 ));
-
-// Options Page for Global Settings (Footer, etc)
-if( function_exists('acf_add_options_page') ) {
-    acf_add_options_page(array(
-        'page_title'    => 'إعدادات القالب العامة',
-        'menu_title'    => 'إعدادات أكسس',
-        'menu_slug'     => 'axiis-settings',
-        'capability'    => 'edit_posts',
-        'redirect'      => false,
-        'icon_url'      => 'dashicons-admin-generic',
-        'position'      => 4,
-    ));
-
-    acf_add_local_field_group(array(
-        'key' => 'group_theme_settings',
-        'title' => 'إعدادات الفوتر والتواصل',
-        'fields' => array(
-            array(
-                'key' => 'field_site_logo',
-                'label' => 'شعار الموقع (اللوجو)',
-                'name' => 'site_logo',
-                'type' => 'image',
-                'return_format' => 'url',
-            ),
-            array(
-                'key' => 'field_footer_desc',
-                'label' => 'وصف الفوتر',
-                'name' => 'footer_description',
-                'type' => 'textarea',
-                'rows' => 4,
-            ),
-            array(
-                'key' => 'field_whatsapp_number',
-                'label' => 'رقم الواتساب',
-                'name' => 'whatsapp_number',
-                'type' => 'text',
-                'instructions' => 'الرقم بالصيغة الدولية (مثل: 966500000000)',
-            ),
-            array(
-                'key' => 'field_phone_number',
-                'label' => 'رقم الهاتف',
-                'name' => 'phone_number',
-                'type' => 'text',
-            ),
-            array(
-                'key' => 'field_email_address',
-                'label' => 'البريد الإلكتروني',
-                'name' => 'email_address',
-                'type' => 'email',
-            ),
-            array(
-                'key' => 'field_facebook_url',
-                'label' => 'رابط فيسبوك',
-                'name' => 'facebook_url',
-                'type' => 'url',
-            ),
-            array(
-                'key' => 'field_twitter_url',
-                'label' => 'رابط تويتر / X',
-                'name' => 'twitter_url',
-                'type' => 'url',
-            ),
-            array(
-                'key' => 'field_instagram_url',
-                'label' => 'رابط انستجرام',
-                'name' => 'instagram_url',
-                'type' => 'url',
-            ),
-            array(
-                'key' => 'field_linkedin_url',
-                'label' => 'رابط لينكد إن',
-                'name' => 'linkedin_url',
-                'type' => 'url',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'options_page',
-                    'operator' => '==',
-                    'value' => 'axiis-settings',
-                ),
-            ),
-        ),
-    ));
-}
 
 endif;

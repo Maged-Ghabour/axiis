@@ -10,20 +10,37 @@
 </head>
 <body <?php body_class(); ?>>
 <?php 
-$site_logo = function_exists('get_field') && get_field('site_logo', 'option') ? get_field('site_logo', 'option') : get_template_directory_uri() . '/assets/logo.png';
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', 'option') ? get_field('whatsapp_number', 'option') : '';
+$site_logo = function_exists('get_field') && get_field('site_logo', get_option('page_on_front')) ? get_field('site_logo', get_option('page_on_front')) : get_template_directory_uri() . '/assets/logo.png';
+$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '';
 $whatsapp_url = $whatsapp ? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $whatsapp) : '#';
+
+$enable_preloader = function_exists('get_field') ? get_field('enable_preloader', get_option('page_on_front')) : true;
+if ($enable_preloader === null) $enable_preloader = true; // Default to true if not set
+
+$enable_cursor = function_exists('get_field') ? get_field('enable_custom_cursor', get_option('page_on_front')) : true;
+if ($enable_cursor === null) $enable_cursor = true; // Default to true if not set
 ?>
     <!-- PREMIUM FEATURES START (HTML) -->
+    <?php if ($enable_preloader) : ?>
     <div id="preloader">
         <img src="<?php echo esc_url($site_logo); ?>" alt="<?php bloginfo('name'); ?> Loading" class="loader-logo">
     </div>
+    <?php endif; ?>
     <div id="progress-bar"></div>
+    <?php if ($enable_cursor) : ?>
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
+    <?php endif; ?>
+    
+    <?php
+    $enable_floating_whatsapp = function_exists('get_field') ? get_field('enable_floating_whatsapp', get_option('page_on_front')) : true;
+    if ($enable_floating_whatsapp === null) $enable_floating_whatsapp = true;
+    if ($enable_floating_whatsapp && !empty($whatsapp) && $whatsapp != '+095 123 4567') :
+    ?>
     <a href="<?php echo esc_url($whatsapp_url); ?>" class="floating-whatsapp" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+    <?php endif; ?>
     <!-- PREMIUM FEATURES END (HTML) -->
 
     <?php 

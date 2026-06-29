@@ -18,6 +18,7 @@ function axiis_theme_setup() {
     // Register Navigation Menus
     register_nav_menus( array(
         'primary' => esc_html__( 'Primary Menu', 'axiis-theme' ),
+        'footer'  => esc_html__( 'Footer Menu', 'axiis-theme' ),
     ) );
 }
 add_action( 'after_setup_theme', 'axiis_theme_setup' );

@@ -12,7 +12,7 @@ $cta_text = function_exists('get_field') && get_field('cta_text') ? get_field('c
 $process_title = function_exists('get_field') && get_field('process_title') ? get_field('process_title') : 'كيف ننفذ مشروعك؟';
 
 // Options
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', 'option') ? get_field('whatsapp_number', 'option') : '';
+$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '';
 $whatsapp_url = $whatsapp ? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $whatsapp) : '#';
 
 // Process Steps
