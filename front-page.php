@@ -6,6 +6,7 @@
 get_header(); 
 
 // ACF Fallbacks
+$hero_bg = function_exists('get_field') && get_field('hero_background', get_option('page_on_front')) ? get_field('hero_background', get_option('page_on_front')) : '';
 $hero_title = function_exists('get_field') && get_field('hero_title') ? get_field('hero_title') : 'حلول متكاملة للألمنيوم والحديد<br>والديكورات الداخلية والخارجية';
 $hero_subtitle = function_exists('get_field') && get_field('hero_subtitle') ? get_field('hero_subtitle') : 'نصمم وننفذ أعمال الألمنيوم والحديد والديكورات الخشبية والمطابخ<br>والخزائن بأعلى معايير الجودة والدقة';
 $cta_text = function_exists('get_field') && get_field('cta_text') ? get_field('cta_text') : 'جاهز لتنفيذ مشروعك؟';
@@ -21,9 +22,13 @@ $step_2 = function_exists('get_field') && get_field('step_2_title') ? get_field(
 $step_3 = function_exists('get_field') && get_field('step_3_title') ? get_field('step_3_title') : 'التصنيع والتنفيذ';
 $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field('step_4_title') : 'التركيب والتسليم';
 
+$hero_style = $hero_bg ? 'style="background-image: url(' . esc_url($hero_bg) . ');"' : '';
 ?>
 
-    <!-- Hero Content -->
+    <section class="hero-section" <?php echo $hero_style; ?>>
+        <div class="overlay"></div>
+        <div class="container">
+            <!-- Hero Content -->
             <div class="hero-content">
                 <h1><?php echo wp_kses_post( $hero_title ); ?></h1>
                 <p><?php echo wp_kses_post( $hero_subtitle ); ?></p>
@@ -37,7 +42,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <main id="main" class="site-main">
     <!-- Services Section -->

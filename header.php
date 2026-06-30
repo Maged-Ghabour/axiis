@@ -69,11 +69,7 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
     <?php endif; ?>
     <!-- PREMIUM FEATURES END (HTML) -->
 
-    <?php 
-    $hero_style = $hero_bg ? 'style="background-image: url(' . esc_url($hero_bg) . ');"' : '';
-    ?>
-    <header class="hero-section" <?php echo $hero_style; ?>>
-        <div class="overlay"></div>
+    <header class="site-header">
         <div class="container">
             <!-- Navbar -->
             <nav class="navbar">
@@ -112,3 +108,5 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
                     </div>
                 </div>
             </nav>
+        </div>
+    </header>

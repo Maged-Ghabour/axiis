@@ -43,9 +43,21 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+}
+
+.hero-section .container {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+/* Site Header */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 }
 
 /* Navbar */
@@ -929,6 +941,12 @@ body {
     
     .service-card.wide-card {
         grid-column: span 1;
+    }
+
+    .testimonials-section {
+        padding: 40px 0;
+        background-color: #f3efe6;
+        color: var(--primary-color);
     }
 
     .cta-banner-container {
