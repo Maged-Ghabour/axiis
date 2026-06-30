@@ -709,7 +709,7 @@ body {
 
 .cta-bg-img {
     position: absolute;
-    top: 32px;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -921,6 +921,10 @@ body {
 @media (max-width: 768px) {
     .services-grid, .features-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .works-swiper .swiper-slide {
+        height: 290px;
     }
     
     .service-card.wide-card {
