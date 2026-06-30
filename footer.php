@@ -1,13 +1,16 @@
 <?php 
 $site_logo = function_exists('get_field') && get_field('site_logo', get_option('page_on_front')) ? get_field('site_logo', get_option('page_on_front')) : get_template_directory_uri() . '/assets/logo.png';
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '+095 123 4567';
-$phone = function_exists('get_field') && get_field('phone_number', get_option('page_on_front')) ? get_field('phone_number', get_option('page_on_front')) : '+095 123 4567';
-$email = function_exists('get_field') && get_field('email_address', get_option('page_on_front')) ? get_field('email_address', get_option('page_on_front')) : 'example@hotmail.com';
+$whatsapp = function_exists('get_field') ? get_field('whatsapp_number', get_option('page_on_front')) : false; if($whatsapp === false || $whatsapp === null) $whatsapp = '966553299696';
+$phone = function_exists('get_field') ? get_field('phone_number', get_option('page_on_front')) : false; if($phone === false || $phone === null) $phone = '966553299696';
+$email = function_exists('get_field') ? get_field('email_address', get_option('page_on_front')) : false; if($email === false || $email === null) $email = 'example@hotmail.com';
 
-$facebook = function_exists('get_field') && get_field('facebook_url', get_option('page_on_front')) ? get_field('facebook_url', get_option('page_on_front')) : '#';
-$twitter = function_exists('get_field') && get_field('twitter_url', get_option('page_on_front')) ? get_field('twitter_url', get_option('page_on_front')) : '#';
-$instagram = function_exists('get_field') && get_field('instagram_url', get_option('page_on_front')) ? get_field('instagram_url', get_option('page_on_front')) : '#';
-$linkedin = function_exists('get_field') && get_field('linkedin_url', get_option('page_on_front')) ? get_field('linkedin_url', get_option('page_on_front')) : '#';
+$facebook = function_exists('get_field') ? get_field('facebook_url', get_option('page_on_front')) : false; if($facebook === false || $facebook === null) $facebook = '#';
+$twitter = function_exists('get_field') ? get_field('twitter_url', get_option('page_on_front')) : false; if($twitter === false || $twitter === null) $twitter = '#';
+$instagram = function_exists('get_field') ? get_field('instagram_url', get_option('page_on_front')) : false; if($instagram === false || $instagram === null) $instagram = '#';
+$linkedin = function_exists('get_field') ? get_field('linkedin_url', get_option('page_on_front')) : false; if($linkedin === false || $linkedin === null) $linkedin = '#';
+$pinterest = function_exists('get_field') ? get_field('pinterest_url', get_option('page_on_front')) : false; if($pinterest === false || $pinterest === null) $pinterest = '#';
+$snapchat = function_exists('get_field') ? get_field('snapchat_url', get_option('page_on_front')) : false; if($snapchat === false || $snapchat === null) $snapchat = '#';
+$tiktok = function_exists('get_field') ? get_field('tiktok_url', get_option('page_on_front')) : false; if($tiktok === false || $tiktok === null) $tiktok = '#';
 ?>
     <!-- Footer -->
     <footer class="main-footer">
@@ -51,18 +54,24 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', get_option
                 <div class="footer-col">
                     <h3>تواصل معنا</h3>
                     <ul class="contact-info">
+                        <?php if(!empty($whatsapp)): ?>
                         <li>
                             <i class="fa-brands fa-whatsapp"></i>
                             <span dir="ltr"><?php echo esc_html($whatsapp); ?></span>
                         </li>
+                        <?php endif; ?>
+                        <?php if(!empty($phone)): ?>
                         <li>
                             <i class="fa-solid fa-phone"></i>
                             <span dir="ltr"><?php echo esc_html($phone); ?></span>
                         </li>
+                        <?php endif; ?>
+                        <?php if(!empty($email)): ?>
                         <li>
                             <i class="fa-regular fa-envelope"></i>
                             <span dir="ltr"><?php echo esc_html($email); ?></span>
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 
@@ -79,6 +88,9 @@ $linkedin = function_exists('get_field') && get_field('linkedin_url', get_option
                         <?php if(!empty($twitter) && $twitter != '#'): ?><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a><?php endif; ?>
                         <?php if(!empty($instagram) && $instagram != '#'): ?><a href="<?php echo esc_url($instagram); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a><?php endif; ?>
                         <?php if(!empty($linkedin) && $linkedin != '#'): ?><a href="<?php echo esc_url($linkedin); ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a><?php endif; ?>
+                        <?php if(!empty($pinterest) && $pinterest != '#'): ?><a href="<?php echo esc_url($pinterest); ?>" target="_blank"><i class="fa-brands fa-pinterest"></i></a><?php endif; ?>
+                        <?php if(!empty($snapchat) && $snapchat != '#'): ?><a href="<?php echo esc_url($snapchat); ?>" target="_blank"><i class="fa-brands fa-snapchat"></i></a><?php endif; ?>
+                        <?php if(!empty($tiktok) && $tiktok != '#'): ?><a href="<?php echo esc_url($tiktok); ?>" target="_blank"><i class="fa-brands fa-tiktok"></i></a><?php endif; ?>
                     </div>
                 </div>
                 <?php endif; ?>

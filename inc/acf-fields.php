@@ -185,6 +185,24 @@ acf_add_local_field_group(array(
             'name' => 'linkedin_url',
             'type' => 'url',
         ),
+        array(
+            'key' => 'field_pinterest_url',
+            'label' => 'رابط بنترست',
+            'name' => 'pinterest_url',
+            'type' => 'url',
+        ),
+        array(
+            'key' => 'field_snapchat_url',
+            'label' => 'رابط سناب شات',
+            'name' => 'snapchat_url',
+            'type' => 'url',
+        ),
+        array(
+            'key' => 'field_tiktok_url',
+            'label' => 'رابط تيك توك',
+            'name' => 'tiktok_url',
+            'type' => 'url',
+        ),
     ),
     'location' => array(
         array(

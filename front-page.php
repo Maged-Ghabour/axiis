@@ -12,7 +12,7 @@ $cta_text = function_exists('get_field') && get_field('cta_text') ? get_field('c
 $process_title = function_exists('get_field') && get_field('process_title') ? get_field('process_title') : 'كيف ننفذ مشروعك؟';
 
 // Options
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '';
+$whatsapp = function_exists('get_field') ? get_field('whatsapp_number', get_option('page_on_front')) : false; if($whatsapp === false || $whatsapp === null) $whatsapp = '966553299696';
 $whatsapp_url = $whatsapp ? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $whatsapp) : '#';
 
 // Process Steps
@@ -29,7 +29,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                 <p><?php echo wp_kses_post( $hero_subtitle ); ?></p>
                 
                 <div class="cta-group">
-                    <button class="primary-btn">اطلب عرض سعر</button>
+                    <a href="<?php echo esc_url($whatsapp_url); ?>" class="primary-btn" style="text-decoration:none; display:inline-flex; align-items:center;" target="_blank">اطلب عرض سعر</a>
                     <a href="<?php echo esc_url($whatsapp_url); ?>" class="outline-btn" style="text-decoration:none; display:inline-flex; align-items:center;" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                         تواصل معنا الآن
@@ -125,10 +125,10 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
             </div>
             
             <div class="section-footer">
-                <button class="gold-btn">
+                <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="gold-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">
                     <i class="fa-brands fa-whatsapp"></i>
                     تواصل معنا
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -170,10 +170,10 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
             </div>
             
             <div class="section-footer" style="margin-top: 40px;">
-                <button class="gold-btn">
+                <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="gold-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">
                     <i class="fa-brands fa-whatsapp"></i>
                     تواصل معنا
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -237,10 +237,10 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
             </div>
             
             <div class="section-footer">
-                <button class="gold-btn">
+                <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="gold-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">
                     <i class="fa-brands fa-whatsapp"></i>
                     تواصل معنا
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -305,7 +305,7 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                 <div class="cta-content">
                     <h2><?php echo esc_html($cta_text); ?></h2>
                     <p>احصل على استشارة مجانية وعرض سعر مخصص حسب احتياجاتك.</p>
-                    <button class="gold-btn">اطلب عرض سعر الآن</button>
+                    <a href="<?php echo esc_url($whatsapp_url); ?>" target="_blank" class="gold-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">اطلب عرض سعر الآن</a>
                 </div>
             </div>
         </div>

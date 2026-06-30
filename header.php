@@ -37,7 +37,7 @@ $hero_bg = function_exists('get_field') && get_field('hero_background', get_opti
 <body <?php body_class(); ?>>
 <?php 
 $site_logo = function_exists('get_field') && get_field('site_logo', get_option('page_on_front')) ? get_field('site_logo', get_option('page_on_front')) : get_template_directory_uri() . '/assets/logo.png';
-$whatsapp = function_exists('get_field') && get_field('whatsapp_number', get_option('page_on_front')) ? get_field('whatsapp_number', get_option('page_on_front')) : '';
+$whatsapp = function_exists('get_field') ? get_field('whatsapp_number', get_option('page_on_front')) : false; if($whatsapp === false || $whatsapp === null) $whatsapp = '966553299696';
 $whatsapp_url = $whatsapp ? 'https://wa.me/' . preg_replace('/[^0-9]/', '', $whatsapp) : '#';
 
 $enable_preloader = function_exists('get_field') ? get_field('enable_preloader', get_option('page_on_front')) : true;
@@ -61,7 +61,7 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
     <?php
     $enable_floating_whatsapp = function_exists('get_field') ? get_field('enable_floating_whatsapp', get_option('page_on_front')) : true;
     if ($enable_floating_whatsapp === null) $enable_floating_whatsapp = true;
-    if ($enable_floating_whatsapp && !empty($whatsapp) && $whatsapp != '+095 123 4567') :
+    if ($enable_floating_whatsapp && !empty($whatsapp)) :
     ?>
     <a href="<?php echo esc_url($whatsapp_url); ?>" class="floating-whatsapp" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
@@ -108,7 +108,7 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
                         <button class="icon-btn" aria-label="بحث">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
-                        <button class="primary-btn sm-btn">اطلب استشارة</button>
+                        <a href="<?php echo esc_url($whatsapp_url); ?>" class="primary-btn sm-btn" target="_blank" style="text-decoration:none;">اطلب استشارة</a>
                     </div>
                 </div>
             </nav>
