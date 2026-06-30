@@ -268,16 +268,16 @@ $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field(
                             <div class="swiper-slide">
                                 <div class="testimonial-card">
                                     <div class="testimonial-header">
+                                        <div class="user-info">
+                                            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/avatar.png" alt="<?php the_title_attribute(); ?>" class="avatar">
+                                            <h3 class="user-name"><?php the_title(); ?></h3>
+                                        </div>
                                         <div class="stars">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <div class="user-info">
-                                            <h3 class="user-name"><?php the_title(); ?></h3>
-                                            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/avatar.png" alt="<?php the_title_attribute(); ?>" class="avatar">
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
