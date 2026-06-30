@@ -101,9 +101,6 @@ if ($enable_cursor === null) $enable_cursor = true; // Default to true if not se
                     ?>
                     
                     <div class="nav-actions">
-                        <button class="icon-btn" aria-label="بحث">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
                         <a href="<?php echo esc_url($whatsapp_url); ?>" class="primary-btn sm-btn" target="_blank" style="text-decoration:none;">اطلب استشارة</a>
                     </div>
                 </div>

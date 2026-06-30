@@ -274,7 +274,8 @@ $hero_style = $hero_bg ? 'style="background-image: url(' . esc_url($hero_bg) . '
                                 <div class="testimonial-card">
                                     <div class="testimonial-header">
                                         <div class="user-info">
-                                            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/avatar.png" alt="<?php the_title_attribute(); ?>" class="avatar">
+                                            <?php $avatar_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'thumbnail') : get_template_directory_uri() . '/assets/avatar.png'; ?>
+                                            <img loading="lazy" src="<?php echo esc_url($avatar_url); ?>" alt="<?php the_title_attribute(); ?>" class="avatar">
                                             <h3 class="user-name"><?php the_title(); ?></h3>
                                         </div>
                                         <div class="stars">
