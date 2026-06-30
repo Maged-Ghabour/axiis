@@ -56,20 +56,26 @@ $tiktok = function_exists('get_field') ? get_field('tiktok_url', get_option('pag
                     <ul class="contact-info">
                         <?php if(!empty($whatsapp)): ?>
                         <li>
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span dir="ltr"><?php echo esc_html($whatsapp); ?></span>
+                            <a href="https://wa.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $whatsapp)); ?>" target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span dir="ltr"><?php echo esc_html($whatsapp); ?></span>
+                            </a>
                         </li>
                         <?php endif; ?>
                         <?php if(!empty($phone)): ?>
                         <li>
-                            <i class="fa-solid fa-phone"></i>
-                            <span dir="ltr"><?php echo esc_html($phone); ?></span>
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone)); ?>">
+                                <i class="fa-solid fa-phone"></i>
+                                <span dir="ltr"><?php echo esc_html($phone); ?></span>
+                            </a>
                         </li>
                         <?php endif; ?>
                         <?php if(!empty($email)): ?>
                         <li>
-                            <i class="fa-regular fa-envelope"></i>
-                            <span dir="ltr"><?php echo esc_html($email); ?></span>
+                            <a href="mailto:<?php echo esc_attr($email); ?>">
+                                <i class="fa-regular fa-envelope"></i>
+                                <span dir="ltr"><?php echo esc_html($email); ?></span>
+                            </a>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -453,41 +459,6 @@ $tiktok = function_exists('get_field') ? get_field('tiktok_url', get_option('pag
                     });
                     btn.addEventListener('mouseleave', () => {
                         gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-                    });
-                });
-            }
-
-            // 6. 3D Tilt Effect on Cards
-            if (typeof gsap !== 'undefined') {
-                const tiltCards = document.querySelectorAll('.feature-card, .service-card');
-                tiltCards.forEach(card => {
-                    card.classList.add('tilt-card');
-                    
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-                        
-                        const rotateX = ((y - centerY) / centerY) * -10; 
-                        const rotateY = ((x - centerX) / centerX) * 10;
-                        
-                        gsap.to(card, {
-                            rotateX: rotateX,
-                            rotateY: rotateY,
-                            duration: 0.4,
-                            ease: "power2.out"
-                        });
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        gsap.to(card, {
-                            rotateX: 0,
-                            rotateY: 0,
-                            duration: 0.7,
-                            ease: "power2.out"
-                        });
                     });
                 });
             }

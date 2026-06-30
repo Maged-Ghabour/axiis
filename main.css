@@ -875,11 +875,21 @@ body {
 }
 
 .contact-info li {
+    font-size: 15px;
+    color: #e0e0e0;
+}
+
+.contact-info li a {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 15px;
-    color: #e0e0e0;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info li a:hover {
+    color: #a3c2cf;
 }
 
 .contact-info i {
