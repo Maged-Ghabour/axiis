@@ -36,6 +36,8 @@ function axiis_enqueue_scripts() {
     wp_enqueue_script( 'scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true );
     // Swiper JS
     wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0', true );
+    // Vanilla Tilt JS
+    wp_enqueue_script( 'vanilla-tilt', 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js', array(), '1.8.1', true );
 }
 add_action( 'wp_enqueue_scripts', 'axiis_enqueue_scripts' );
 

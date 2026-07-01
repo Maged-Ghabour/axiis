@@ -462,6 +462,15 @@ $tiktok = function_exists('get_field') ? get_field('tiktok_url', get_option('pag
                     });
                 });
             }
+            // 6. Vanilla Tilt for Service Cards
+            if (typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".service-card"), {
+                    max: 15,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.2
+                });
+            }
         });
     </script>
 </body>
