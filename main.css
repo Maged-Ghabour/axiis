@@ -534,10 +534,14 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease;
     opacity: 0.6;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for Safari border-radius bug */
 }
 
 .works-swiper .swiper-slide-active {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
     opacity: 1;
     z-index: 2;
 }
