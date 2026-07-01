@@ -123,11 +123,11 @@ $tiktok = function_exists('get_field') ? get_field('tiktok_url', get_option('pag
                 },
                 breakpoints: {
                     640: {
-                        slidesPerView: 2,
+                        slidesPerView: 1.5,
                         spaceBetween: 20,
                     },
                     1024: {
-                        slidesPerView: 3.5,
+                        slidesPerView: 2.2,
                         spaceBetween: 30,
                     },
                 }
