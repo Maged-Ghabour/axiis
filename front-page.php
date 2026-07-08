@@ -315,8 +315,14 @@ $hero_mobile_bg = get_template_directory_uri() . '/assets/heroMobile.png';
     <section class="cta-banner-section">
         <div class="container">
             <div class="cta-banner-container">
-                <?php $cta_bg = function_exists('get_field') && get_field('cta_background') ? get_field('cta_background') : get_template_directory_uri() . '/assets/banner1.png'; ?>
-                <img loading="lazy" src="<?php echo esc_url($cta_bg); ?>" alt="<?php echo esc_attr($cta_text); ?>" class="cta-bg-img">
+                <?php 
+                $cta_bg = function_exists('get_field') && get_field('cta_background') ? get_field('cta_background') : get_template_directory_uri() . '/assets/banner1.png'; 
+                $cta_mobile_bg = get_template_directory_uri() . '/assets/bannerMobil.png';
+                ?>
+                <picture style="display: contents;">
+                    <source media="(max-width: 768px)" srcset="<?php echo esc_url($cta_mobile_bg); ?>">
+                    <img loading="lazy" src="<?php echo esc_url($cta_bg); ?>" alt="<?php echo esc_attr($cta_text); ?>" class="cta-bg-img">
+                </picture>
                 <div class="cta-content">
                     <h2><?php echo esc_html($cta_text); ?></h2>
                     <p>احصل على استشارة مجانية وعرض سعر مخصص حسب احتياجاتك.</p>
