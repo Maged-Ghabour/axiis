@@ -23,8 +23,17 @@ $step_3 = function_exists('get_field') && get_field('step_3_title') ? get_field(
 $step_4 = function_exists('get_field') && get_field('step_4_title') ? get_field('step_4_title') : 'التركيب والتسليم';
 
 $hero_style = $hero_bg ? 'style="background-image: url(' . esc_url($hero_bg) . ');"' : '';
+$hero_mobile_bg = get_template_directory_uri() . '/assets/heroMobile.png';
 ?>
-
+    <style>
+        @media (max-width: 768px) {
+            .hero-section {
+                background-image: url('<?php echo esc_url($hero_mobile_bg); ?>') !important;
+                background-position: center center;
+                background-size: cover;
+            }
+        }
+    </style>
     <section class="hero-section" <?php echo $hero_style; ?>>
         <div class="overlay"></div>
         <div class="container">
