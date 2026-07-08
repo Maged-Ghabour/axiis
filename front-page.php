@@ -316,8 +316,8 @@ $hero_mobile_bg = get_template_directory_uri() . '/assets/heroMobile.png';
         <div class="container">
             <div class="cta-banner-container">
                 <?php 
-                $cta_bg = function_exists('get_field') && get_field('cta_background') ? get_field('cta_background') : get_template_directory_uri() . '/assets/Rectangle%202.png'; 
-                $cta_mobile_bg = get_template_directory_uri() . '/assets/bannerMobil.png';
+                $cta_bg = function_exists('get_field') && get_field('cta_background') ? get_field('cta_background') : get_template_directory_uri() . '/assets/banner1.png'; 
+                $cta_mobile_bg = get_template_directory_uri() . '/assets/Rectangle%202.png';
                 ?>
                 <picture style="display: contents;">
                     <source media="(max-width: 768px)" srcset="<?php echo esc_url($cta_mobile_bg); ?>">

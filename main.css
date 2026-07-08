@@ -967,7 +967,7 @@ body {
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        padding: 40px 20px 0 20px;
+        padding: 0;
     }
 
     .cta-bg-img {
@@ -985,10 +985,10 @@ body {
 
     .cta-content {
         width: 100%;
-        margin-right: 0;
-        padding-left: 0;
+        padding-left: 45px;
         margin-top: 0;
         order: 1;
+        padding: 23px;
     }
 
     .cta-content h2 {
